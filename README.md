@@ -13,7 +13,6 @@
 | first_name_kana | string | null: false |
 | day_of_birth    | datetime| null: false|
 
-
 ## items テーブル
 
 | Column                   | Type       | Options    |
