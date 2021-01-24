@@ -1,7 +1,6 @@
 # テーブル設計
 
 ## users テーブル
-
 | Column          | Type   | Options     |
 | --------------- | ------ | ----------- |
 | email           | string | null: false |
@@ -14,7 +13,6 @@
 | day_of_birth    | datetime| null: false|
 
 ## items テーブル
-
 | Column                   | Type       | Options    |
 | ------------             | ---------- | -----------|
 | item-name                | string     | null: false|
@@ -30,13 +28,11 @@
 
 
 ## item_categories テーブル
-
 | Column                   | Type       | Options    |
 | ------------             | ---------- | -----------|
 | category                 | string型   | null: false|
 | sales-status             | string型   | null: false|
 | item                     | references | |
-
 
 ## comments テーブル
 | Column   | Type      | Options     |
@@ -44,6 +40,7 @@
 | text     | text      | null: false |
 | user     | references| |
 | item     | references|  |
+
 
 ## buyersテーブル
 | Column          | Type      | Options     |
@@ -56,7 +53,6 @@
 | phone-number    | text      | null: false |
 | user            | references | |
 | item            | references | |
-
 
 ## purchase_historiesテーブル
 | Column          | Type      | Options     |
