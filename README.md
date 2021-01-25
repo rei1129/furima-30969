@@ -34,7 +34,7 @@ has_many :comments
 ### Association
 belongs_to :user
 has_many :comments
-has_one purchase_histories
+has_one purchase_history
 
 
 ## comments テーブル
