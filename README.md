@@ -3,14 +3,14 @@
 ## users テーブル
 | Column             | Type   | Options     |
 | ---------------    | ------ | ----------- |
-| name               | string型 | null: false |
-| email              | string型 | null: false |
-| encrypted_password | string型 | null: false |
-| last_name          | string型 | null: false |
-| first_name         | string型 | null: false |
-| last_name_kana     | string型 | null: false |
-| first_name_kana    | string型 | null: false |
-| day_of_birth       | date型   | null: false|
+| name               | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| last_name          | string | null: false |
+| first_name         | string | null: false |
+| last_name_kana     | string | null: false |
+| first_name_kana    | string | null: false |
+| day_of_birth       | date   | null: false|
 ### Association
 has_many :items
 has_many :purchase_histories
@@ -20,17 +20,15 @@ has_many :comments
 ## items テーブル
 | Column                   | Type       | Options    |
 | --------------------     | ---------- | -----------|
-| name                     | string型   | null: false|
-| text                     | text型     | null: false|
-| category_id              | integer型  | null: false| 
-| sales-status_id          | integer型  | null: false| 
-| shipping-fee-status_id   | integer型  | null: false| 
-| prefecture_id            | integer型  | null: false|  
-| scheduled-delivery_id    | integer型  | null: false| 
-| price                    | integer型  | null: false| 
-| tax-price                | integer型  | null: false|
-| profit                   | integer型  | null: false| 
-| user                     | references | |
+| name                     | string   | null: false|
+| text                     | text     | null: false|
+| category_id              | integer  | null: false| 
+| sales-status_id          | integer  | null: false| 
+| shipping-fee-status_id   | integer  | null: false| 
+| prefecture_id            | integer  | null: false|  
+| scheduled-delivery_id    | integer  | null: false| 
+| price                    | integer  | null: false| 
+| user                     | references | foreign_key: true|
 ### Association
 belongs_to :user
 has_many :comments
@@ -41,8 +39,8 @@ has_one purchase_history
 | Column   | Type      | Options     |
 | -------- | ------    | ----------- |
 | text     | text      | null: false |
-| user     | references| |
-| item     | references| |
+| user     | references| foreign_key: true|
+| item     | references| foreign_key: true|
 ### Association
 belongs_to :item
 belongs_to :user
@@ -51,8 +49,8 @@ belongs_to :user
 ## purchase_historiesテーブル
 | Column          | Type      | Options     |
 | ------------    | ------    | ----------- |
-| user            | references | |
-| item            | references | |
+| user            | references | foreign_key: true |
+| item            | references | foreign_key: true|
 ### Association
 belongs_to :user
 belongs_to :item
@@ -62,12 +60,12 @@ has_one :address
 ## addressesテーブル
 | Column          | Type       | Options     |
 | ------------    | -----      | ----------- |
-| postal_code     | string型   | null: false |
-| prefecture_id   | integer型  | null: false |
-| city            | string型   | null: false |
-| address         | string型   | null: false |
-| building        | string型   | null: false |
-| phone-number    | string型   | null: false |
-| purchase_history| references | |
+| postal_code     | string   | null: false |
+| prefecture_id   | integer  | null: false |
+| city            | string   | null: false |
+| address         | string   | null: false |
+| building        | string   | null: false |
+| phone-number    | string   | null: false |
+| purchase_history| references | foreign_key: true|
 ### Association
 belongs_to :purchase_history
