@@ -4,7 +4,7 @@
 | Column             | Type   | Options     |
 | ---------------    | ------ | ----------- |
 | name               | string | null: false |
-| email              | string | null: false |
+| email              | string | null: false,unique: true |
 | encrypted_password | string | null: false |
 | last_name          | string | null: false |
 | first_name         | string | null: false |
@@ -64,7 +64,7 @@ has_one :address
 | prefecture_id   | integer  | null: false |
 | city            | string   | null: false |
 | address         | string   | null: false |
-| building        | string   | null: false |
+| building        | string   | |
 | phone_number    | string   | null: false |
 | purchase_history| references | foreign_key: true|
 ### Association
