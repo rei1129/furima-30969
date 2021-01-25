@@ -23,10 +23,10 @@ has_many :comments
 | name                     | string   | null: false|
 | text                     | text     | null: false|
 | category_id              | integer  | null: false| 
-| sales-status_id          | integer  | null: false| 
-| shipping-fee-status_id   | integer  | null: false| 
+| sales_status_id          | integer  | null: false| 
+| shipping_fee_status_id   | integer  | null: false| 
 | prefecture_id            | integer  | null: false|  
-| scheduled-delivery_id    | integer  | null: false| 
+| scheduled_delivery_id    | integer  | null: false| 
 | price                    | integer  | null: false| 
 | user                     | references | foreign_key: true|
 ### Association
@@ -65,7 +65,7 @@ has_one :address
 | city            | string   | null: false |
 | address         | string   | null: false |
 | building        | string   | null: false |
-| phone-number    | string   | null: false |
+| phone_number    | string   | null: false |
 | purchase_history| references | foreign_key: true|
 ### Association
 belongs_to :purchase_history
