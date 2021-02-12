@@ -7,8 +7,9 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :text
+    validates :image
   end
-  
+
     with_options numericality: { other_than: 1 } do
       validates :category_id
       validates :sales_status_id
