@@ -31,27 +31,27 @@ RSpec.describe Item, type: :model do
         it 'カテゴリーが空では登録できない' do
           @item.category_id = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include "Category is not a number"
+          expect(@item.errors.full_messages).to include 'Category is not a number'
         end
         it '商品の状態が空では登録できない' do
           @item.sales_status_id = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include "Sales status is not a number"
+          expect(@item.errors.full_messages).to include 'Sales status is not a number'
         end
         it '配送料の負担が空では登録できない' do
           @item.shipping_fee_status_id = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include "Shipping fee status is not a number"
+          expect(@item.errors.full_messages).to include 'Shipping fee status is not a number'
         end
         it '発送元の地域が空では登録できない' do
           @item.prefecture_id = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include "Prefecture is not a number"
+          expect(@item.errors.full_messages).to include 'Prefecture is not a number'
         end
         it '発送までの日数が空では登録できない' do
           @item.scheduled_delivery_id = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include "Scheduled delivery is not a number"
+          expect(@item.errors.full_messages).to include 'Scheduled delivery is not a number'
         end
         it '販売価格が空では登録できない' do
           @item.price = ''
@@ -64,7 +64,7 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include 'Price must be greater than or equal to 300'
         end
         it '販売価格が9,999,999円以上では登録できない' do
-          @item.price = 10000000
+          @item.price = 10_000_000
           @item.valid?
           expect(@item.errors.full_messages).to include 'Price must be less than or equal to 9999999'
         end
@@ -87,7 +87,7 @@ RSpec.describe Item, type: :model do
         it 'カテゴリカラムは1以外でないと登録できない' do
           @item.category_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include "Category must be other than 1"
+          expect(@item.errors.full_messages).to include 'Category must be other than 1'
         end
         it '商品の状態カラムは1以外でないと登録できない' do
           @item.sales_status_id = 1
@@ -97,17 +97,17 @@ RSpec.describe Item, type: :model do
         it '配送料の負担カラムは1以外でないと登録できない' do
           @item.shipping_fee_status_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include "Shipping fee status must be other than 1"
+          expect(@item.errors.full_messages).to include 'Shipping fee status must be other than 1'
         end
         it '発送元の地域カラムは1以外でないと登録できない' do
           @item.prefecture_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include "Prefecture must be other than 1"
+          expect(@item.errors.full_messages).to include 'Prefecture must be other than 1'
         end
         it '発送までの日数カラムは1以外でないと登録できない' do
           @item.scheduled_delivery_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include "Scheduled delivery must be other than 1"
+          expect(@item.errors.full_messages).to include 'Scheduled delivery must be other than 1'
         end
       end
     end
