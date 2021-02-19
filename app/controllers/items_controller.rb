@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-    @items = Item.includes(:user).order("created_at DESC")
+    @items = Item.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -19,6 +19,21 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    item = Item.find(params[:id])
+    item.update(item_params)
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
   end
 
   private
