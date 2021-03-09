@@ -5,7 +5,7 @@ class CreateOrderShippingAddresses < ActiveRecord::Migration[6.0]
       t.integer :prefecture_id,    null: false
       t.text    :municipality,    null: false
       t.string  :address,         null: false
-      t.text    :building_name,   null: false
+      t.text    :building_name
       t.string  :phone_number,    null: false
       t.references :order,        foreign_key: true 
       t.timestamps

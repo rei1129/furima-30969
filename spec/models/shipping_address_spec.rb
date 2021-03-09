@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe ShippingAddress, type: :model do
   describe '商品購入' do
     before do
-      @shipping_address = FactoryBot.build(:shipping_address)
+      user = FactoryBot.create(:user)
+      item = FactoryBot.create(:item)
+      @shipping_address = FactoryBot.build(:shipping_address, user_id: 1 , item_id: 1)
+      sleep 0.1
     end
     context '商品購入ができる時' do
 
@@ -34,7 +37,7 @@ RSpec.describe ShippingAddress, type: :model do
     end
 
     it 'postal_codeには-を含めないと商品購入することができないこと' do
-      @shipping_address.postal_code = 1_001_000
+      @shipping_address.postal_code = '1_001_000'
       @shipping_address.valid?
       expect(@shipping_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
     end
@@ -45,7 +48,7 @@ RSpec.describe ShippingAddress, type: :model do
       expect(@shipping_address.errors.full_messages).to include('Prefecture is not a number')
     end
     it 'prefectureが1だと商品購入することができないこと' do
-      @shipping_address.prefecture_id = '1'
+      @shipping_address.prefecture_id = 1
       @shipping_address.valid?
       expect(@shipping_address.errors.full_messages).to include('Prefecture must be other than 1')
     end
