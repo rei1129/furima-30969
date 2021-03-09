@@ -5,6 +5,7 @@ RSpec.describe ShippingAddress, type: :model do
     before do
       @shipping_address = FactoryBot.build(:shipping_address)
     end
+    context '商品購入ができる時' do
 
     it '全ての値が存在すれば商品購入ができること' do
       expect(@shipping_address).to be_valid
@@ -12,6 +13,18 @@ RSpec.describe ShippingAddress, type: :model do
     it 'building_nameが空でも商品購入することができること' do
       @shipping_address.building_name = nil
       expect(@shipping_address).to be_valid
+    end
+  end
+  context '商品購入ができない時' do
+    it 'user_idが空だと商品購入することができないこと' do
+      @shipping_address.user_id = nil
+      @shipping_address.valid?
+      expect(@shipping_address.errors.full_messages).to include("User can't be blank")
+    end
+    it 'item_idが空だと商品購入することができないこと' do
+      @shipping_address.item_id = nil
+      @shipping_address.valid?
+      expect(@shipping_address.errors.full_messages).to include("Item can't be blank")
     end
 
     it 'postal_codeが空だと商品購入することができないこと' do
@@ -61,10 +74,17 @@ RSpec.describe ShippingAddress, type: :model do
       @shipping_address.valid?
       expect(@shipping_address.errors.full_messages).to include('Phone number is invalid')
     end
+    it 'phone_numberが英数字混合では登録できないこと' do
+      @shipping_address.phone_number = '0z0z2x4x6789'
+      @shipping_address.valid?
+      expect(@shipping_address.errors.full_messages).to include('Phone number is invalid')
+    end
+
     it 'tokenが空だと商品購入することができないこと' do
       @shipping_address.token = nil
       @shipping_address.valid?
       expect(@shipping_address.errors.full_messages).to include("Token can't be blank")
     end
+  end
   end
 end

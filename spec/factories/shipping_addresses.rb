@@ -7,5 +7,7 @@ FactoryBot.define do
       building_name { '練馬はうす' }
       phone_number { '09012345678' }
       token { 'tok_abcdefghijk12345678900000000' }
+      item_id {'1'}
+      user_id {'1'}
   end
 end

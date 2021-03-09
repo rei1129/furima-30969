@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_product, only: [:index, :create]
+  before_action :move_to_index
 
   def index
     @shipping_address = ShippingAddress.new
@@ -28,6 +29,7 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
+
   def pay_order
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
@@ -36,4 +38,9 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def move_to_index
+    redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
+  end
+  
 end
