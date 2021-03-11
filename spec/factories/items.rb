@@ -9,5 +9,8 @@ FactoryBot.define do
     scheduled_delivery_id { 2 }
     price { 500 }
     association :user
+    after(:build) do |message|
+      message.image.attach(io: File.open('app/assets/images/test.jpg'), filename: 'test.jpg')
+    end
   end
 end
